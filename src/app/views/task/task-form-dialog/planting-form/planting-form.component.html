@@ -1,0 +1,75 @@
+<form [formGroup]="form">
+
+  <input type="hidden" formControlName="id">
+  <input type="hidden" formControlName="task_id">
+
+  <div fxLayout="row">
+    <mat-form-field fxFlex>
+      <mat-label>{{ 'task_from_dialog.variety_label' | translate }}</mat-label>
+      <mat-select
+        formControlName="variety_id"
+        required>
+        <mat-option (click)="onAddVariety()">{{ 'create' | translate | uppercaseFirst }} {{ 'variety' | translate }}</mat-option>
+        <mat-option *ngFor="let variety of varieties$ | async" [value]="variety.id">{{ variety.name }}</mat-option>
+      </mat-select>
+	  <mat-error *ngIf="form.get('variety_id').invalid">{{ 'task_from_dialog.variety_invalid' | translate }}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="center center">
+
+    <mat-form-field fxFlex="50">
+      <mat-label>{{ 'task_from_dialog.intra_row_spacing_label' | translate }}</mat-label>
+      <mat-select formControlName="intra_row_spacing" required>
+        <mat-option *ngFor="let rowSpacing of rowSpacings" [value]="rowSpacing.value">{{ rowSpacing.label }} cm</mat-option>
+      </mat-select>
+     <mat-error *ngIf="form.get('intra_row_spacing').invalid">{{ 'task_from_dialog.intra_row_spacing_invalid' | translate }}</mat-error>
+    </mat-form-field>
+
+    <mat-icon>close</mat-icon>
+
+    <mat-form-field fxFlex="50">
+      <mat-label>{{ 'task_from_dialog.inter_row_spacing_label' | translate }}</mat-label>
+      <mat-select formControlName="inter_row_spacing" required>
+        <mat-option *ngFor="let rowSpacing of rowSpacings" [value]="rowSpacing.value">{{ rowSpacing.label }} cm</mat-option>
+      </mat-select>
+     <mat-error *ngIf="form.get('inter_row_spacing').invalid">{{ 'task_from_dialog.inter_row_spacing_invalid' | translate }}</mat-error>
+    </mat-form-field>
+
+  </div>
+
+  <div fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="center center">
+
+    <mat-form-field fxFlex="50">
+      <mat-label>{{ 'task_from_dialog.quantity_label' | translate }}</mat-label>
+      <input matInput
+        type="number"
+        min=0
+        formControlName="quantity"
+        required>
+      <span matSuffix>&nbsp;plant(s)</span>
+      <mat-error *ngIf="form.get('quantity').invalid">{{ 'task_from_dialog.quantity_invalid' | translate }}</mat-error>
+    </mat-form-field>
+
+    <button 
+      mat-button
+	  mat-icon-button
+      (click)="toggleCompute()"
+	  type="button">
+	  <mat-icon>{{ computeQuantity ? 'west' : 'east' }}</mat-icon>
+	</button>
+
+    <mat-form-field fxFlex="50">
+      <mat-label>{{ 'task_from_dialog.area_label' | translate }}</mat-label>
+      <input matInput
+        type="number"
+        min=0
+        formControlName="area"
+        required>
+      <span matSuffix>&nbsp;m²</span>
+      <mat-error *ngIf="form.get('area').invalid">{{ 'task_from_dialog.area_invalid' | translate }}</mat-error>
+    </mat-form-field>
+
+  </div>
+
+</form>

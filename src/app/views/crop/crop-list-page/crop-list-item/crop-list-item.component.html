@@ -1,0 +1,10 @@
+<button mat-list-item  *ngIf="crop.name$ | async as name">
+  <span matListIcon class="avatar" [style.background-color]="crop.color$ | async">{{ name | slice:0:2 }}</span>
+  <span matLine>{{ name }}</span>
+  <span matLine class="task-done" *ngIf="lastDoneTask$ | async as task">
+    {{ task.date | date:'d MMM' }} {{ task.type | translate }}
+  </span>
+  <span matLine class="task-todo" *ngIf="firstTodoTask$ | async as task">
+    {{ task.date | date:'d MMM' }} {{ task.type | translate }}
+  </span>
+</button>

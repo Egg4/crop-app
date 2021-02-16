@@ -1,0 +1,18 @@
+<mat-toolbar fxLayout="row" fxLayoutAlign="center center">
+  <span class="ellipsis">{{ crop.name$ | async }}</span>
+</mat-toolbar>
+<mat-divider></mat-divider>
+
+<div class="bottom-sheet-buttons-container" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="16px">
+
+  <div class="bottom-sheet-button-wrapper">
+    <button mat-fab (click)="bottomSheetRef.dismiss('update')" color="primary"><mat-icon>create</mat-icon></button>
+    <div class="label">{{ 'edit' | translate | uppercaseFirst }}</div>
+  </div>
+
+  <div class="bottom-sheet-button-wrapper">
+    <button mat-fab (click)="bottomSheetRef.dismiss('delete')" color="primary"><mat-icon>delete</mat-icon></button>
+    <div class="label">{{ 'delete' | translate | uppercaseFirst }}</div>
+  </div>
+
+</div>

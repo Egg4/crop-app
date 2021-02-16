@@ -1,0 +1,25 @@
+<mat-toolbar>
+  <mat-icon>grain</mat-icon>
+  <span>{{ 'seeding' | translate | uppercaseFirst }}</span>
+  <span class="spacer"></span>
+  <button mat-button mat-icon-button
+    [disabled]="!canAddForm"
+    (click)="addForm()">
+    <mat-icon>add</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-divider></mat-divider>
+
+<div @listAnimation>
+  <div @listItemAnimation *ngFor="let seeding of seedings; index as index">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <app-seeding-form fxFlex [seeding]="seeding" [cropId]="cropId" (formChange)="formChange()"></app-seeding-form>
+      <div style="padding-right:16px">
+        <button mat-button mat-icon-button (click)="removeForm(index)">
+          <mat-icon>remove</mat-icon>
+        </button>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+  </div>
+</div>

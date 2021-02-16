@@ -1,0 +1,25 @@
+<mat-toolbar>
+  <mat-icon>shopping_basket</mat-icon>
+  <span>{{ 'harvesting' | translate | uppercaseFirst }}</span>
+  <span class="spacer"></span>
+  <button mat-button mat-icon-button
+    [disabled]="!canAddForm"
+    (click)="addForm()">
+    <mat-icon>add</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-divider></mat-divider>
+
+<div @listAnimation>
+  <div @listItemAnimation *ngFor="let harvesting of harvestings; index as index">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <app-harvesting-form fxFlex [harvesting]="harvesting" (formChange)="formChange()"></app-harvesting-form>
+      <div style="padding-right:16px">
+        <button mat-button mat-icon-button (click)="removeForm(index)">
+          <mat-icon>remove</mat-icon>
+        </button>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+  </div>
+</div>

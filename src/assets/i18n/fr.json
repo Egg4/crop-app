@@ -1,0 +1,135 @@
+{
+  "add": "ajouter",
+  "broadcasting": "à la volée",
+  "create": "créer",
+  "crop": "culture",
+  "crops": "cultures",
+  "demo": "démo",
+  "delete": "supprimer",
+  "direct_seeding": "semis direct",
+  "drilling": "en ligne",
+  "edit": "editer",
+  "email": "email",
+  "farm": "ferme",
+  "farms": "fermes",
+  "harvesting": "récolte",
+  "login": "connexion",
+  "logout": "déconnexion",
+  "no": "non",
+  "nursery_seeding": "semis en pépinière",
+  "password": "mot de passe",
+  "plant": "plant",
+  "plants": "plants",
+  "planting": "plantation",
+  "plant_purchasing": "achat des plants",
+  "plug": "motte",
+  "pluging": "en motte",
+  "plugs": "mottes",
+  "quantity": "quantité",
+  "seed": "graine",
+  "seeds": "graines",
+  "seeding": "semis",
+  "task": "tâche",
+  "tasks": "tâches",
+  "variety": "variété",
+  "varieties": "variétés",
+  "working": "temps de travail",
+  "yes": "oui",
+
+  "app_title": "Culture App",
+  "local_code": "fr_FR",
+  "date_format": "d MMM yy",
+
+  "login_page": {
+    "email_label": "Email",
+    "email_placeholder": "nom@email.fr",
+    "email_required": "Email requis",
+    "email_invalid": "Email non valide",
+    "password_label": "Mot de passe",
+    "password_placeholder": "Entrez votre mot de passe",
+    "password_required": "Password requis",
+    "password_invalid": "Minimum 8 caractères, au moins 1 majuscule, 1 minuscule et 1 chiffre",
+    "authentication_failure": "L'authentification a échoué : vérifiez votre email et votre mot de passe"
+  },
+
+  "crop_list_page": {
+    "crop_x_created": "Culture \"{{ name }}\" créee",
+    "crop_x_deleted": "Culture \"{{ name }}\" supprimée",
+    "crop_x_updated": "Culture \"{{ name }}\" mise à jour"
+  },
+
+  "crop_view_page": {
+    "task_x_created": "Tâche \"{{ name }}\" créee",
+    "task_x_deleted": "Tâche \"{{ name }}\" supprimée",
+    "task_x_updated": "Tâche \"{{ name }}\" mise à jour"
+  },
+
+  "task_list_page": {
+    "todo": "A faire",
+    "done": "Terminées",
+    "task_x_deleted": "Tâche \"{{ name }}\" supprimée",
+    "task_x_updated": "Tâche \"{{ name }}\" mise à jour"
+  },
+
+  "variety_list_page": {
+    "variety_x_created": "Variété \"{{ name }}\" créee",
+    "variety_x_deleted": "Variété \"{{ name }}\" supprimée",
+    "variety_x_updated": "Variété \"{{ name }}\" mise à jour"
+  },
+
+  "crop_from_dialog": {
+    "plant_ids_label": "Plante(s)",
+    "plant_ids_invalid": "Sélectionnez au moins une plante",
+    "number_label": "Numéro",
+    "number_placeholder": "Numéro de série de la culture",
+    "number_invalid": "Numéro non valide",
+    "crop_already_exists": "Cette culture existe déjà"
+  },
+
+  "task_from_dialog": {
+    "date_label": "Date",
+    "date_invalid": "Date non valide",
+    "time_label": "Heure",
+    "time_invalid": "Heure requise",
+    "done_label": "Terminée",
+    "duration_label": "Durée",
+    "duration_invalid": "Durée requise",
+    "mwu_label": "Personnes",
+    "mwu_placeholder": "Nombre de participants",
+    "mwu_invalid": "Personnes non valide",
+    "variety_label": "Variété",
+    "variety_invalid": "Variété requise",
+    "mode_label": "Méthode",
+    "mode_invalid": "Méthode requise",
+    "density_label": "Densité",
+    "density_invalid": "Densité non valide",
+    "intra_row_spacing_label": "Intra rang",
+    "intra_row_spacing_invalid": "Intra rang requis",
+    "inter_row_spacing_label": "Inter rang",
+    "inter_row_spacing_invalid": "Inter rang requis",
+    "area_label": "Surface",
+    "area_invalid": "Surface non valide",
+    "quantity_label": "Quantité",
+    "quantity_invalid": "Quantité non valide",
+    "unit_label": "Unité",
+    "unit_invalid": "unité requise",
+    "variety_x_created": "Variété \"{{ name }}\" créee"
+  },
+
+  "variety_from_dialog": {
+    "plant_id_label": "Plante",
+    "plant_id_invalid": "Plante requise",
+    "name_label": "Nom",
+    "name_placeholder": "Nom de la variété",
+    "name_invalid": "Nom non valide"
+  },
+
+  "delete_dialog": {
+    "title": "Supprimer \"{{ name }}\"",
+    "message": "Voulez-vous vraiment supprimer \"{{ name }}\" ?"
+  },
+
+  "errors": {
+    "network_error": { "title": "Erreur réseau", "message": "Vérifiez votre connexion réseau" }
+  }
+}

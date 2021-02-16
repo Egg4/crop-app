@@ -1,0 +1,39 @@
+<app-form-toolbar
+  [title]="title$ | async"
+  [saveDisabled]="!submittable"
+  (cancel)="onCancelClick()"
+  (save)="onSaveClick()">
+</app-form-toolbar>
+
+<app-task-pane
+  [task]="task"
+  (paneChange)="paneChange()">
+</app-task-pane>
+
+<app-working-pane
+  [working]="task.working"
+  [taskId]="task.id"
+  (paneChange)="paneChange()">
+</app-working-pane>
+
+<app-seeding-pane
+  *ngIf="task.type === 'seeding'"
+  [seedings]="task.seedings"
+  [taskId]="task.id"
+  [cropId]="task.crop_id"
+  (paneChange)="paneChange()">
+</app-seeding-pane>
+
+<app-planting-pane
+  *ngIf="task.type === 'planting'"
+  [plantings]="task.plantings"
+  [taskId]="task.id"
+  (paneChange)="paneChange()">
+</app-planting-pane>
+
+<app-harvesting-pane
+  *ngIf="task.type === 'harvesting'"
+  [harvestings]="task.harvestings"
+  [taskId]="task.id"
+  (paneChange)="paneChange()">
+</app-harvesting-pane>

@@ -1,0 +1,85 @@
+<div class="container">
+
+  <mat-toolbar>
+    <span class="title ellipsis">{{ 'login' | translate | uppercaseFirst }}</span>
+  </mat-toolbar>
+
+  <form fxLayout="column" fxLayoutGap="16px" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <mat-error *ngIf="form.errors?.authentication_failure && (form.touched || form.dirty)">
+    {{ 'login_page.authentication_failure' | translate }}
+  </mat-error>
+
+  <div fxLayout="row">
+    <mat-form-field class="language" fxFlex>
+      <button matPrefix mat-icon-button type="button">
+        <mat-icon>language</mat-icon>
+      </button>
+      <mat-select
+        formControlName="language"
+        (selectionChange)="onChangeLanguage()"
+        required>
+        <mat-option *ngFor="let lang of languages" [value]="lang.value">{{ lang.label }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div fxFlex fxLayout="row">
+    <mat-form-field class="email" fxFlex>
+	  <mat-label>{{ 'login_page.email_label' | translate }}</mat-label>
+	  <button matPrefix mat-icon-button type="button">
+        <mat-icon>email</mat-icon>
+      </button>
+	  <input matInput
+	    type="email"
+	    placeholder="{{ 'login_page.email_placeholder' | translate }}"
+	    formControlName="email"
+	    required>
+	  <button mat-button
+        [disabled]="!email.value"
+	  	matSuffix mat-icon-button (click)="email.setValue('')"
+	  	type="button">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="email.errors?.required">{{ 'login_page.email_required' | translate }}</mat-error>
+      <mat-error *ngIf="email.errors?.invalid">{{ 'login_page.email_invalid' | translate }}</mat-error>
+	</mat-form-field>
+  </div>
+
+  <div fxFlex fxLayout="row">
+	<mat-form-field class="password" fxFlex>
+	  <mat-label>{{ 'login_page.password_label' | translate }}</mat-label>
+	  <button matPrefix mat-icon-button type="button">
+        <mat-icon>lock</mat-icon>
+      </button>
+	  <input matInput
+	    [type]="passwordVisible ? 'text' : 'password'"
+	    placeholder="{{ 'login_page.password_placeholder' | translate }}"
+	    formControlName="password"
+	    required>
+	  <button mat-button
+	  	mat-icon-button matSuffix (click)="passwordVisible = !passwordVisible" 
+	  	type="button">
+	    <mat-icon>{{ passwordVisible ? 'visibility_off' : 'visibility' }}</mat-icon>
+	  </button>
+	  <mat-error *ngIf="password.errors?.required">{{ 'login_page.password_required' | translate }}</mat-error>
+      <mat-error *ngIf="password.errors?.invalid">{{ 'login_page.password_invalid' | translate }}</mat-error>
+	</mat-form-field>
+  </div>
+
+  <div fxFlex fxLayout="row" fxLayoutGap="16px">
+    <button fxFlex="50" mat-raised-button type="button" (click)="onClickDemo()">
+      {{ 'demo' | translate | uppercaseFirst }}&nbsp;<mat-icon>slideshow</mat-icon>
+    </button>
+
+    <button fxFlex="50" mat-raised-button
+      type="submit"
+      color="primary"
+      [disabled]="!submittable">
+      {{ 'login' | translate | uppercaseFirst }}&nbsp;<mat-icon>login</mat-icon>
+    </button>
+  </div>
+
+  </form>
+
+</div>

@@ -1,0 +1,23 @@
+<mat-toolbar fxLayout="row" fxLayoutAlign="center center">
+  <span class="ellipsis">{{ crop.name$ | async }}</span>
+</mat-toolbar>
+<mat-divider></mat-divider>
+
+<div class="bottom-sheet-buttons-container" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="16px">
+
+  <div class="bottom-sheet-button-wrapper" *ngIf="crop.mode !== 'plant_purchasing'">
+    <button mat-fab (click)="bottomSheetRef.dismiss('seeding')"><mat-icon>grain</mat-icon></button>
+    <div class="label">{{ 'seeding' | translate | uppercaseFirst }}</div>
+  </div>
+
+  <div class="bottom-sheet-button-wrapper" *ngIf="crop.mode !== 'direct_seeding'">
+    <button mat-fab (click)="bottomSheetRef.dismiss('planting')"><mat-icon>get_app</mat-icon></button>
+    <div class="label">{{ 'planting' | translate | uppercaseFirst }}</div>
+  </div>
+
+  <div class="bottom-sheet-button-wrapper">
+    <button mat-fab (click)="bottomSheetRef.dismiss('harvesting')"><mat-icon>shopping_basket</mat-icon></button>
+    <div class="label">{{ 'harvesting' | translate | uppercaseFirst }}</div>
+  </div>
+
+</div>

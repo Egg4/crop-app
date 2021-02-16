@@ -1,0 +1,63 @@
+<form [formGroup]="form" *ngIf="crop$ | async as crop">
+
+  <input type="hidden" formControlName="id">
+  <input type="hidden" formControlName="task_id">
+  <input type="hidden" formControlName="unit">
+
+  <div fxLayout="row">
+    <mat-form-field fxFlex>
+      <mat-label>{{ 'task_from_dialog.variety_label' | translate }}</mat-label>
+      <mat-select
+        formControlName="variety_id"
+        required>
+        <mat-option (click)="onAddVariety()">{{ 'create' | translate | uppercaseFirst }} {{ 'variety' | translate }}</mat-option>
+        <mat-option *ngFor="let variety of varieties$ | async" [value]="variety.id">{{ variety.name }}</mat-option>
+      </mat-select>
+	  <mat-error *ngIf="form.get('variety_id').invalid">{{ 'task_from_dialog.variety_invalid' | translate }}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row">
+    <mat-form-field fxFlex
+      *ngIf="(crop.mode === 'direct_seeding' ? directSeedingModes : nurserySeedingModes) as modes">
+      <mat-label>{{ 'task_from_dialog.mode_label' | translate }}</mat-label>
+      <mat-select formControlName="mode" required>
+        <mat-option
+          *ngFor="let mode of modes"
+          [value]="mode">
+          {{ mode | translate | uppercaseFirst  }}
+        </mat-option>
+      </mat-select>
+     <mat-error *ngIf="form.get('mode').invalid">{{ 'task_from_dialog.mode_invalid' | translate }}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutGap="16px">
+
+    <mat-form-field fxFlex="50">
+      <mat-label>{{ 'task_from_dialog.density_label' | translate }}</mat-label>
+      <input matInput
+        type="number"
+        min=0
+        formControlName="density"
+        required>
+      <span *ngIf="crop.mode === 'direct_seeding'" matSuffix>g/m²</span>
+      <span *ngIf="crop.mode !== 'direct_seeding'" matSuffix>{{ 'seed' | translate }}/{{ 'plug' | translate }}</span>
+      <mat-error *ngIf="form.get('density').invalid">{{ 'task_from_dialog.density_invalid' | translate }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field fxFlex="50">
+      <mat-label>{{ 'task_from_dialog.area_label' | translate }}</mat-label>
+      <input matInput
+        type="number"
+        min=0
+        formControlName="area"
+        required>
+      <span *ngIf="crop.mode === 'direct_seeding'" matSuffix>m²</span>
+      <span *ngIf="crop.mode !== 'direct_seeding'" matSuffix>{{ 'plugs' | translate }}</span>
+      <mat-error *ngIf="form.get('area').invalid">{{ 'task_from_dialog.area_invalid' | translate }}</mat-error>
+    </mat-form-field>
+
+  </div>
+
+</form>

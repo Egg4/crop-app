@@ -1,0 +1,109 @@
+<app-view-toolbar
+  [title]="title$ | async"
+  (back)="onBackClick()">
+</app-view-toolbar>
+
+<ng-container *ngIf="crop$ | async as crop">
+
+  <mat-list>
+    <mat-list-item>
+      <span>{{ crop.mode | translate | uppercaseFirst }}</span>
+    </mat-list-item>
+  </mat-list>
+
+  <ng-container *ngIf="tasks$ | async as tasks">
+    <mat-action-list @listAnimation>
+      <mat-divider></mat-divider>
+      <div @listItemAnimation *ngFor="let task of tasks">
+        <button
+          fxLayout="row"
+          fxLayoutAlign="start stretch"
+          matRipple
+          (press)="onItemPress(task)">
+
+          <div
+            fxFlex="80px"
+            fxLayout="column"
+            fxLayoutAlign="center"
+            class="datetime"
+            [style.background-color]="crop.color$ | async">
+            <div class="date">{{ task.date | date:'d MMM' }}</div>
+            <div class="time">{{ task.time | slice:0:5 }}</div>
+          </div>
+
+          <div
+            fxFlex
+            fxLayout="column"
+            fxLayoutGap="4px"
+            fxLayoutAlign="center"
+            class="description">
+
+            <div [ngClass]="task.done ? 'task-done' : 'task-todo'" class="type">{{ task.type | translate | uppercaseFirst }}</div>
+
+            <div fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="start center" class="working" *ngIf="task.working as working">
+              <mat-icon>timer</mat-icon>
+              <span fxFlex>{{ working.duration | slice:0:5 }}</span>
+              <span>{{ working.mwu }}</span>
+              <mat-icon>person</mat-icon>
+            </div>
+
+            <div fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="start center" class="seeding" *ngFor="let seeding of task.seedings">
+              <mat-icon>grain</mat-icon>
+              <div fxFlex *ngIf="seeding.variety$ | async as variety">
+                <div>
+                  
+                </div>
+                <div *ngIf="variety.plant$ | async as plant">
+                  {{ plant.name }} {{ variety.name }}
+                </div>
+                <div>
+                  {{ task.type | translate | uppercaseFirst }} {{ seeding.mode | translate }}:
+                  {{ seeding.density }}
+                  <ng-container *ngIf="crop.mode === 'direct_seeding'">{{ 'g/m²' }}</ng-container>
+                  <ng-container *ngIf="crop.mode !== 'direct_seeding'">{{ 'seed' | translate }} / {{ 'plug' | translate }}</ng-container>
+                </div>
+              </div>
+              <div fxFlex="80px" class="right">
+                {{ seeding.area }}
+                <span *ngIf="crop.mode === 'direct_seeding'"> {{ 'm²' }}</span>
+                <span *ngIf="crop.mode !== 'direct_seeding'"> {{ 'plugs' | translate }}</span>
+              </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="start center" class="planting" *ngFor="let planting of task.plantings">
+              <mat-icon>get_app</mat-icon>
+              <div fxFlex *ngIf="planting.variety$ | async as variety">
+                <div *ngIf="variety.plant$ | async as plant">{{ plant.name }} {{ variety.name }}</div>
+                <div>
+                  {{ planting.quantity }} {{ 'plants' | translate }}:
+                  {{ planting.intra_row_spacing }} cm X {{ planting.inter_row_spacing }} cm
+                </div>
+              </div>
+              <span fxFlex="80px" class="right">
+                {{ planting.quantity * planting.intra_row_spacing * planting.inter_row_spacing / 10000 | number:'1.0-0' }} {{ 'm²' }}
+              </span>
+            </div>
+
+            <div fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="start center" class="harvesting" *ngFor="let harvesting of task.harvestings">
+              <mat-icon>shopping_basket</mat-icon>
+              <div fxFlex *ngIf="harvesting.variety$ | async as variety">
+                <div *ngIf="variety.plant$ | async as plant">{{ plant.name }} {{ variety.name }}</div>
+              </div>
+              <span fxFlex="80px" class="right">
+                {{ harvesting.quantity }} {{ harvesting.unit }}
+              </span>
+            </div>
+
+          </div>
+
+        </button>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-action-list>
+  </ng-container>
+
+  <button mat-fab class="fixed-add-fab-button" color="warn" (click)="onAddClick(crop)">
+    <mat-icon>add</mat-icon>
+  </button>
+
+</ng-container>

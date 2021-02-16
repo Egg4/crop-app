@@ -1,0 +1,41 @@
+<form [formGroup]="form">
+
+  <input type="hidden" formControlName="id">
+  <input type="hidden" formControlName="task_id">
+
+  <div fxLayout="row">
+    <mat-form-field fxFlex>
+      <mat-label>{{ 'task_from_dialog.variety_label' | translate }}</mat-label>
+      <mat-select
+        formControlName="variety_id"
+        required>
+        <mat-option (click)="onAddVariety()">{{ 'create' | translate | uppercaseFirst }} {{ 'variety' | translate }}</mat-option>
+        <mat-option *ngFor="let variety of varieties$ | async" [value]="variety.id">{{ variety.name }}</mat-option>
+      </mat-select>
+	  <mat-error *ngIf="form.get('variety_id').invalid">{{ 'task_from_dialog.variety_invalid' | translate }}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutGap="16px">
+
+    <mat-form-field fxFlex="50">
+      <mat-label>{{ 'task_from_dialog.quantity_label' | translate }}</mat-label>
+      <input matInput
+        type="number"
+        min=0
+        formControlName="quantity"
+        required>
+      <mat-error *ngIf="form.get('quantity').invalid">{{ 'task_from_dialog.quantity_invalid' | translate }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field fxFlex="50">
+      <mat-label>{{ 'task_from_dialog.unit_label' | translate }}</mat-label>
+      <mat-select formControlName="unit" required>
+        <mat-option *ngFor="let unit of units" [value]="unit">{{ unit }}</mat-option>
+      </mat-select>
+     <mat-error *ngIf="form.get('unit').invalid">{{ 'task_from_dialog.unit_invalid' | translate }}</mat-error>
+    </mat-form-field>
+
+  </div>
+
+</form>

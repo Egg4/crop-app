@@ -1,0 +1,40 @@
+<app-form-toolbar
+  [title]="title$ | async"
+  [saveDisabled]="!submittable"
+  (cancel)="onCancelClick()"
+  (save)="onSaveClick()">
+</app-form-toolbar>
+
+<form fxLayout="column" fxLayoutGap="16px" [formGroup]="form">
+
+  <input type="hidden" formControlName="id">
+
+  <div fxFlex fxLayout="row">
+    <mat-form-field fxFlex>
+      <mat-label>{{ 'variety_from_dialog.plant_id_label' | translate }}</mat-label>
+      <mat-select formControlName="plant_id" required>
+        <mat-option *ngFor="let plant of allPlants$ | async" [value]="plant.id">{{ plant.name }}</mat-option>
+      </mat-select>
+	  <mat-error *ngIf="form.get('plant_id').invalid">{{ 'variety_from_dialog.plant_id_invalid' | translate }}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div fxFlex fxLayout="row">
+    <mat-form-field fxFlex>
+	  <mat-label>{{ 'variety_from_dialog.name_label' | translate }}</mat-label>
+	  <input #nameInput matInput
+	    type="text"
+	    formControlName="name"
+	    placeholder="{{ 'variety_from_dialog.name_placeholder' | translate }}"
+	    required>
+	  <button mat-button
+        [disabled]="!form.get('name').value"
+	  	matSuffix mat-icon-button (click)="form.get('name').setValue('')"
+	  	type="button">
+        <mat-icon>close</mat-icon>
+      </button>
+	  <mat-error *ngIf="form.get('name').invalid">{{ 'variety_from_dialog.name_invalid' | translate }}</mat-error>
+	</mat-form-field>
+  </div>
+
+</form>

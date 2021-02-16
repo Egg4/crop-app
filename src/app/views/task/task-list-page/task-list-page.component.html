@@ -1,0 +1,31 @@
+<app-list-toolbar
+  title="{{ 'tasks' | translate | uppercaseFirst }}">
+</app-list-toolbar>
+
+<mat-tab-group mat-align-tabs="center">
+
+  <mat-tab label="{{ 'task_list_page.todo' | translate }}">
+    <mat-action-list @listAnimation>
+      <div *ngFor="let date of todoDates$ | async">
+        <div mat-subheader class="ellipsis">{{ date | date:'MMMM yyyy' | uppercaseFirst }}</div>
+        <div @listItemAnimation *ngFor="let task of getTodoTasks(date) | async">
+          <app-task-list-item [task]="task" (press)="onItemPress(task)"></app-task-list-item>
+        </div>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-action-list>
+  </mat-tab>
+
+  <mat-tab label="{{ 'task_list_page.done' | translate }}">
+    <mat-action-list @listAnimation>
+      <div *ngFor="let date of doneDates$ | async">
+        <div mat-subheader class="ellipsis">{{ date | date:'MMMM yyyy' | uppercaseFirst }}</div>
+        <div @listItemAnimation *ngFor="let task of getDoneTasks(date) | async">
+          <app-task-list-item [task]="task" (press)="onItemPress(task)"></app-task-list-item>
+        </div>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-action-list>
+  </mat-tab>
+
+</mat-tab-group>

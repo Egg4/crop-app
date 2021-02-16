@@ -1,0 +1,32 @@
+<form [formGroup]="form">
+
+  <input type="hidden" formControlName="id">
+  <input type="hidden" formControlName="crop_id">
+  <input type="hidden" formControlName="type">
+
+  <div fxLayout="row" fxLayoutGap="16px">
+
+    <mat-form-field fxFlex="50">
+      <mat-label>{{ 'task_from_dialog.date_label' | translate }}</mat-label>
+      <input matInput
+        [matDatepicker]="datepicker"
+        formControlName="date"
+        required>
+      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker></mat-datepicker>
+      <mat-error *ngIf="form.get('date').invalid">{{ 'task_from_dialog.date_invalid' | translate }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field fxFlex="50">
+      <mat-label>{{ 'task_from_dialog.time_label' | translate }}</mat-label>
+      <mat-select formControlName="time" required>
+        <mat-option *ngFor="let time of times$ | async" [value]="time.value">{{ time.label }}</mat-option>
+      </mat-select>
+     <mat-error *ngIf="form.get('time').invalid">{{ 'task_from_dialog.time_invalid' | translate }}</mat-error>
+    </mat-form-field>
+
+  </div>
+
+  <mat-slide-toggle formControlName="done">{{ 'task_from_dialog.done_label' | translate }}</mat-slide-toggle>
+
+</form>

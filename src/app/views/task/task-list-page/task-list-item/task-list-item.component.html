@@ -1,0 +1,7 @@
+<button mat-list-item [ngClass]="task.done ? 'task-done' : 'task-todo'" *ngIf="crop$ | async as crop">
+  <span matListIcon *ngIf="task.type === 'seeding'" class="avatar"><mat-icon>grain</mat-icon></span>
+  <span matListIcon *ngIf="task.type === 'planting'" class="avatar"><mat-icon>get_app</mat-icon></span>
+  <span matListIcon *ngIf="task.type === 'harvesting'" class="avatar"><mat-icon>shopping_basket</mat-icon></span>
+  <span matLine>{{ task.type | translate | uppercaseFirst }} {{ crop.name$ | async }}</span>
+  <span matLine>{{ task.date | date:'d MMM yyyy' }} {{ task.time | slice:0:5 }}</span>
+</button>

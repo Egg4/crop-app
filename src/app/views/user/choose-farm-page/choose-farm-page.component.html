@@ -1,0 +1,21 @@
+<div class="container" *ngIf="farms$ | async as farms">
+  <ng-container *ngIf="farms.length > 1">
+
+    <mat-toolbar>
+      <span class="title ellipsis">{{ 'farms' | translate | uppercaseFirst }}</span>
+    </mat-toolbar>
+
+    <mat-action-list>
+      <mat-divider></mat-divider>
+      <div *ngFor="let farm of farms">
+        <button mat-list-item (click)="onItemClick(farm)">
+          {{ farm.name }}
+          <span class="spacer"></span>
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      <mat-divider></mat-divider>
+      </div>
+    </mat-action-list>
+
+  </ng-container>
+</div>

@@ -1,0 +1,53 @@
+<app-form-toolbar
+  [title]="title$ | async"
+  [saveDisabled]="!submittable"
+  (cancel)="onCancelClick()"
+  (save)="onSaveClick()">
+</app-form-toolbar>
+
+<form fxLayout="column" fxLayoutGap="16px" [formGroup]="form">
+
+  <mat-error *ngIf="form.errors?.exists && (form.touched || form.dirty)">
+    {{ 'crop_from_dialog.crop_already_exists' | translate }}
+  </mat-error>
+
+  <input type="hidden" formControlName="id">
+  <input type="hidden" formControlName="task_ids">
+
+  <div fxFlex fxLayout="row">
+    <mat-form-field fxFlex>
+      <mat-label>{{ 'crop_from_dialog.plant_ids_label' | translate }}</mat-label>
+      <mat-select formControlName="plant_ids" multiple required>
+        <mat-option *ngFor="let plant of allPlants$ | async" [value]="plant.id">{{ plant.name }}</mat-option>
+      </mat-select>
+	  <mat-error *ngIf="form.get('plant_ids').invalid">{{ 'crop_from_dialog.plant_ids_invalid' | translate }}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div fxFlex fxLayout="row">
+    <mat-form-field fxFlex>
+      <mat-label>{{ 'crop_from_dialog.number_label' | translate }}</mat-label>
+	  <input matInput
+	    type="number" min="1"
+        formControlName="number"
+        placeholder="{{ 'crop_from_dialog.number_placeholder' | translate }}"
+        required>
+      <button mat-icon-button matSuffix
+        (click)="onNumberClick(-1)"
+        type="button">
+        <mat-icon>remove</mat-icon>
+      </button>
+	  <button mat-icon-button matSuffix
+        (click)="onNumberClick(1)"
+        type="button">
+        <mat-icon>add</mat-icon>
+      </button>
+	  <mat-error *ngIf="form.get('number').invalid">{{ 'crop_from_dialog.number_invalid' | translate }}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <mat-radio-group fxFlex fxLayout="column" fxLayoutGap="8px" formControlName="mode">
+    <mat-radio-button fxFlex="100" *ngFor="let mode of modes" [value]="mode">{{ mode | translate | uppercaseFirst }}</mat-radio-button>
+  </mat-radio-group>
+
+</form>

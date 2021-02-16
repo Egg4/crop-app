@@ -1,0 +1,23 @@
+<mat-toolbar>
+  <mat-icon>timer</mat-icon>
+  <span>{{ 'working' | translate | uppercaseFirst }}</span>
+  <span class="spacer"></span>
+  <button mat-button mat-icon-button
+    [disabled]="(working)"
+    (click)="addForm()">
+    <mat-icon>add</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-divider></mat-divider>
+
+<div @listItemAnimation *ngIf="working">
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <app-working-form fxFlex [working]="working" (formChange)="formChange()"></app-working-form>
+    <div style="padding-right:16px">
+      <button mat-button mat-icon-button (click)="removeForm()">
+        <mat-icon>remove</mat-icon>
+      </button>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+</div>

@@ -1,0 +1,38 @@
+mat-action-list button {
+  cursor: pointer;
+  width: 100%;
+  padding: 0;
+}
+
+mat-action-list button:hover {
+  background: rgba(0,0,0,.04);
+}
+
+mat-action-list button .datetime {
+  color: white;
+  text-align: left;
+  white-space: nowrap;
+  padding: 8px 8px 8px 16px;
+}
+
+mat-action-list button .description {
+  padding: 8px 16px 8px 8px;
+}
+
+mat-action-list button .datetime .time {
+  font-size: 13px;
+}
+
+mat-action-list button mat-icon {
+  font-size: 20px;
+  height: auto;
+  width: auto;
+}
+
+mat-action-list button .working,
+mat-action-list button .seeding,
+mat-action-list button .planting,
+mat-action-list button .harvesting {
+  font-size: 13px;
+  color: #555;
+}

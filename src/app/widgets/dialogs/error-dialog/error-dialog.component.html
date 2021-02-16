@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>{{ title$ | async }}</h2>
+
+<p>{{ message$ | async }}</p>
+
+<div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="16px" >
+
+  <button fxFlex="50"
+    mat-raised-button
+    mat-dialog-close
+    color="primary">
+    <mat-icon>check</mat-icon>&nbsp;{{ 'ok' | translate | uppercaseFirst }}
+  </button>
+
+</div>

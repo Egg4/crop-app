@@ -1,0 +1,25 @@
+<mat-toolbar>
+  <mat-icon>get_app</mat-icon>
+  <span>{{ 'planting' | translate | uppercaseFirst }}</span>
+  <span class="spacer"></span>
+  <button mat-button mat-icon-button
+    [disabled]="!canAddForm"
+    (click)="addForm()">
+    <mat-icon>add</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-divider></mat-divider>
+
+<div @listAnimation>
+  <div @listItemAnimation *ngFor="let planting of plantings; index as index">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <app-planting-form fxFlex [planting]="planting" (formChange)="formChange()"></app-planting-form>
+      <div style="padding-right:16px">
+        <button mat-button mat-icon-button (click)="removeForm(index)">
+          <mat-icon>remove</mat-icon>
+        </button>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+  </div>
+</div>

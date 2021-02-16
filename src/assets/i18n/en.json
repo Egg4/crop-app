@@ -1,0 +1,135 @@
+{
+  "add": "add",
+  "broadcasting": "broadcasting",
+  "create": "create",
+  "crop": "crop",
+  "crops": "crops",
+  "demo": "demo",
+  "delete": "delete",
+  "direct_seeding": "direct seeding",
+  "drilling": "drilling",
+  "edit": "edit",
+  "email": "email",
+  "farm": "farm",
+  "farms": "farms",
+  "harvesting": "harvesting",
+  "login": "login",
+  "logout": "logout",
+  "no": "no",
+  "nursery_seeding": "nursery seeding",
+  "password": "password",
+  "plant": "plant",
+  "plants": "plants",
+  "planting": "planting",
+  "plant_purchasing": "plant purchasing",
+  "plug": "plug",
+  "pluging": "pluging",
+  "plugs": "plugs",
+  "quantity": "quantity",
+  "seed": "seed",
+  "seeds": "seeds",
+  "seeding": "seeding",
+  "task": "task",
+  "tasks": "tasks",
+  "variety": "variety",
+  "varieties": "varieties",
+  "working": "working",
+  "yes": "yes",
+
+  "app_title": "Crop App",
+  "local_code": "en_US",
+  "date_format": "MMM d yy",
+
+  "login_page": {
+    "email_label": "Email",
+    "email_placeholder": "name@email.com",
+    "email_required": "Email required",
+    "email_invalid": "Email not valid",
+    "password_label": "Password",
+    "password_placeholder": "Enter your password",
+    "password_required": "Password required",
+    "password_invalid": "Minimum 8 characters, at least 1 uppercase, 1 lowercase and 1 number",
+    "authentication_failure": "Authentication failed: check your email and password"
+  },
+
+  "crop_list_page": {
+    "crop_x_created": "Crop \"{{ name }}\" created",
+    "crop_x_deleted": "Crop \"{{ name }}\" deleted",
+    "crop_x_updated": "Crop \"{{ name }}\" updated"
+  },
+
+  "crop_view_page": {
+    "task_x_created": "Task \"{{ name }}\" created",
+    "task_x_deleted": "Task \"{{ name }}\" deleted",
+    "task_x_updated": "task \"{{ name }}\" updated"
+  },
+
+  "task_list_page": {
+    "todo": "Todo",
+    "done": "Done",
+    "task_x_deleted": "Task \"{{ name }}\" deleted",
+    "task_x_updated": "task \"{{ name }}\" updated"
+  },
+
+  "variety_list_page": {
+    "variety_x_created": "Variety \"{{ name }}\" created",
+    "variety_x_deleted": "Variety \"{{ name }}\" deleted",
+    "variety_x_updated": "Variety \"{{ name }}\" updated"
+  },
+
+  "crop_from_dialog": {
+    "plant_ids_label": "Plant(s)",
+    "plant_ids_invalid": "Select at least one plant",
+    "number_label": "Number",
+    "number_placeholder": "Serial number of the crop",
+    "number_invalid": "Number not valid",
+    "crop_already_exists": "This crop already exists"
+  },
+
+  "task_from_dialog": {
+    "date_label": "Date",
+    "date_invalid": "Date not valid",
+    "time_label": "Time",
+    "time_invalid": "Time required",
+    "done_label": "Done",
+    "duration_label": "Duration",
+    "duration_invalid": "Duration required",
+    "mwu_label": "People",
+    "mwu_placeholder": "Number of participants",
+    "mwu_invalid": "People not valid",
+    "variety_label": "Variety",
+    "variety_invalid": "Variety required",
+    "mode_label": "Method",
+    "mode_invalid": "Method required",
+    "density_label": "Density",
+    "density_invalid": "Density not valid",
+    "intra_row_spacing_label": "Intra row",
+    "intra_row_spacing_invalid": "Intra row required",
+    "inter_row_spacing_label": "Inter row",
+    "inter_row_spacing_invalid": "Inter row required",
+    "area_label": "Area",
+    "area_invalid": "Area not valid",
+    "quantity_label": "Quantity",
+    "quantity_invalid": "Quantity not valid",
+    "unit_label": "Unit",
+    "unit_invalid": "unit required",
+    "variety_x_created": "Variety \"{{ name }}\" created"
+  },
+
+  "variety_from_dialog": {
+    "plant_id_label": "Plant",
+    "plant_id_invalid": "Plant required",
+    "name_label": "Name",
+    "name_placeholder": "Name of the variety",
+    "name_invalid": "Name not valid"
+  },
+
+  "delete_dialog": {
+    "title": "Delete \"{{ name }}\"",
+    "message": "Do you really want to delete \"{{ name }}\" ?"
+  },
+
+  "errors": {
+    "network_error": { "title": "Network error", "message": "Check your network connection" }
+  }
+}

@@ -1,0 +1,14 @@
+<app-list-toolbar
+  title="{{ 'crops' | translate | uppercaseFirst }}">
+</app-list-toolbar>
+
+<mat-action-list @listAnimation  *ngIf="crops$ | async as crops">
+  <div @listItemAnimation *ngFor="let crop of crops">
+    <app-crop-list-item [crop]="crop" (click) = "onItemClick(crop)" (press)="onItemPress(crop)"></app-crop-list-item>
+    <mat-divider></mat-divider>
+  </div>
+</mat-action-list>
+
+<button mat-fab class="fixed-add-fab-button" color="warn" (click)="onAddClick()">
+  <mat-icon>add</mat-icon>
+</button>
