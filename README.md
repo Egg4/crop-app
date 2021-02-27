@@ -5,9 +5,6 @@ Crop App is a single page app built with [Angular](https://angular.io) and allow
 
 See demo at [https://app.maraichage.org](https://app.maraichage.org)
 
-Functional description
-----------------------
-
 **Crop list:** The user manages his crops by plant. Multi-plants crops and serial crops are allowed.
 
 **Task oriented:** Like a todo list, the user logs the tasks (seeding, planting, harvesting) he performs on crops.
@@ -18,6 +15,15 @@ Functional description
 
 **Multi-language:** The user can choose his UI language (English and French for now).
 
+Docker
+------
+Docker image on [DockerHub](https://hub.docker.com/r/egg4/crop-app)
+
+```
+> docker pull egg4/crop-app
+> docker run -tid -p 80:80 --name crop-app egg4/crop-app
+```
+Then open a browser on  _localhost_
 
 Technical description
 ---------------------
